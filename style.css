@@ -96,7 +96,15 @@ button[disabled] {
 .float-right {
   float: right;
 }
+.buttons{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#show-buttons{
+  display: block;
 
+}
 #password {
   -webkit-appearance: none;
   -moz-appearance: none;
