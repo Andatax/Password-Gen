@@ -12,11 +12,14 @@ const lower = lowerChecker.checked;
 const sym = scChecker.checked;
 const length = lengthVal.value;
 
+// takes initial values checked only but it doesn't update the values the box is unchecked
 const settings = { upper, num, lower, sym };
+console.log(settings)
 const settingsC = Object.entries(settings).filter(([key, value]) => value === true);
+console.log(settingsC)
 const FilteredSettings = {};
 const fsObj = settingsC.reduce((object, [key]) => { object[key] = true; return object; }, FilteredSettings);
-const acumm = (upper + num + lower + sym);
+const activeSettings = (upper + num + lower + sym);
 
 // adding lowercase letters to an array
 let lowC = charactersArray(26, 97);
@@ -40,17 +43,50 @@ function randomSelector(CharacterArray) {
   const indexR = array[arrayR];
   return indexR
 }
-// how can i make a code to run the index of the array 'fsObj'
-// I need to make a variable with and empty string to that every time for cycle iterates it adds in character of the array 'fsObj' options.
-function generatePassword(param) {
+
+// ---------- ---------------------------------------------------------------Option 1 ----------
+
+// function passwordGenerator(obj, userLength, lowerCaseArray, upperCaseArray, numbersArray, symbolsArray) {
+//   let pass = '';
+//   let set = Object.keys(obj);
+//   console.log(set)
+//   for (let i = 0; i < userLength;  i+=4) {
+//     pass += randomSelector(lowerCaseArray)
+//     pass += randomSelector(upperCaseArray)
+//     pass += randomSelector(numbersArray)
+//     pass += randomSelector(symbolsArray)
+//   }
+//   return pass
+// }
+// console.log(passwordGenerator(fsObj, 16, lowC, upC, symA, numA))
+
+// ------------------------------------------------------------------------ Option 2 ---------------------
+
+function passwordGenerator(obj, userLength, lowerCaseArray, upperCaseArray, numbersArray, symbolsArray) {
   let pass = '';
-  for (let i = 0; i < param; i + acumm) {
-    fsObj.forEach((element) => pass += randomSelector(element))
+  let set = Object.keys(obj);
+  console.log(set)
+  for (let i = 0; i <= lengthVal.value; i += set.length) {
+    if (lowerChecker.checked) {
+      pass += randomSelector(lowerCaseArray)
+    }
+    if (upperChecker.checked) {
+      pass += randomSelector(upperCaseArray)
+    }
+    if (numChecker.checked) {
+      pass += randomSelector(numbersArray)
+    }
+    if (scChecker.checked) {
+      pass += randomSelector(symbolsArray)
+    }
   }
-  return pass;
+  console.log(pass)
+  console.log(pass.length)
+  return pass
 }
-const finalPassword = generatePassword(10);
-console.log(finalPassword);
+// console.log(passwordGenerator(fsObj, 16, lowC, upC, numA, symA))
+
+
 
 // Write password to the #password input
 function writePassword() {
@@ -60,6 +96,8 @@ function writePassword() {
   passwordText.value = password;
 }
 
-// // Add event listener to generate button
-// generateBtn.addEventListener("click", generateSettings);
+// Add event listener to generate button
+generateBtn.addEventListener("click", () => {
+  passwordGenerator(fsObj, 16, lowC, upC, numA, symA)
+});
 
