@@ -33,24 +33,44 @@ function charactersArray(alphabetLength, ASCIIcodeOffset) {
   }
   return arr;
 }
+
 // random selector from character arrays
 function randomSelector(CharacterArray) {
   const array = CharacterArray;
   const arrayR = Math.floor(Math.random() * array.length);
   const indexR = array[arrayR];
-  return indexR
+  return indexR;
 }
-// how can i make a code to run the index of the array 'fsObj'
-// I need to make a variable with and empty string to that every time for cycle iterates it adds in character of the array 'fsObj' options.
-function generatePassword(param) {
+
+function passwordGenerator(fsObj, length) {
   let pass = '';
-  for (let i = 0; i < param; i + acumm) {
-    fsObj.forEach((element) => pass += randomSelector(element))
+  for (let i = 0; i < length; i += acumm) {
+    Object.keys(fsObj).forEach(key => {
+      let characterArray = [];
+      if (key === 'upper') {
+        characterArray = upC;
+      } else if (key === 'lower') {
+        characterArray = lowC;
+      } else if (key === 'num') {
+        characterArray = numA;
+      } else if (key === 'sym') {
+        characterArray = symA;
+      }
+        // console.log(characterArray);
+      const randomCharacter = randomSelector(characterArray);
+      // console.log(randomCharacter)
+      pass += randomCharacter;
+    });
   }
   return pass;
 }
-const finalPassword = generatePassword(10);
-console.log(finalPassword);
+
+const generatedPassword = passwordGenerator(fsObj, 16);
+const slicedPassword = generatedPassword.slice(0, 16);
+
+console.log(slicedPassword);
+console.log(slicedPassword.length);
+
 
 // Write password to the #password input
 function writePassword() {
