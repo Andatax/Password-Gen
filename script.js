@@ -46,16 +46,11 @@ function passwordGenerator(fsObj, length) {
   let pass = '';
   for (let i = 0; i < length; i += acumm) {
     Object.keys(fsObj).forEach(key => {
-      let characterArray = [];
-      if (key === 'upper') {
-        characterArray = upC;
-      } else if (key === 'lower') {
-        characterArray = lowC;
-      } else if (key === 'num') {
-        characterArray = numA;
-      } else if (key === 'sym') {
-        characterArray = symA;
-      }
+      const characterArray =
+        key === 'upper' ? upC :
+          key === 'lower' ? lowC :
+            key === 'num' ? numA :
+              key === 'sym' ? symA : [];
         // console.log(characterArray);
       const randomCharacter = randomSelector(characterArray);
       // console.log(randomCharacter)
@@ -65,8 +60,8 @@ function passwordGenerator(fsObj, length) {
   return pass;
 }
 
-const generatedPassword = passwordGenerator(fsObj, 16);
-const slicedPassword = generatedPassword.slice(0, 16);
+const generatedPassword = passwordGenerator(fsObj, 2);
+const slicedPassword = generatedPassword.slice(0, 2);
 
 console.log(slicedPassword);
 console.log(slicedPassword.length);
