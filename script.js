@@ -13,9 +13,3 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", generateSettings);
 
-function generateSettings(){
-  document.getElementById("show-buttons").style.display = 'block';  
-
-
-}
-
