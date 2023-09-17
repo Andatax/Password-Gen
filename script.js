@@ -7,9 +7,11 @@ function generatePassword() {
   let symA = charactersArray(11, 33);
   // adding numbers to an array;
   let numA = charactersArray(10, 48);
+  let password = '';
   let characterArray = lowC.concat(upC,symA, numA);
   console.log(characterArray)
-  return 'hello'
+password += 
+  return characterArray;
 }
 
 function charactersArray(alphabetLength, ASCIIcodeOffset) {
