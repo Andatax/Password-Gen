@@ -8,12 +8,28 @@ function generatePassword() {
   // adding numbers to an array;
   let numbersArr = charactersArray(10, 48);
   let password = '';
+  let emptyArray = [];
   const passwordLength = Number(window.prompt("Type your desired password length please.\n(Minimum 8 characters long and no more than 128 characters)", ""));
+  const lowerCharPrompt = window.confirm("Would you like your password to contain lowercase characters?")
+    ? emptyArray = emptyArray.concat(lowerCaseArr)
+    : emptyArray;
+    
+  const upperCharPrompt = window.confirm("Would you like your password to contain uppercase characters?")
+    ? emptyArray = emptyArray.concat(upperCaseArr)
+    : emptyArray;
 
-  let characterArray = lowerCaseArr.concat(upperCaseArr, specialCharsArr, numbersArr);
-  // console.log(characterArray)
-  const randomIndex = Math.floor(Math.random() * characterArray.length);
-  password = characterArray[randomIndex];
+  const specialCharsPrompt = window.confirm("Would you like your password to contain special characters?")
+    ? emptyArray = emptyArray.concat(specialCharsArr)
+    : emptyArray;
+
+  const numbersPrompt = window.confirm("Would you like your password to contain numbers?")
+    ? emptyArray = emptyArray.concat(numbersArr)
+    : emptyArray;
+  console.log(emptyArray);
+  for (i = 0; i < passwordLength; i++) {
+    const randomIndex = Math.floor(Math.random() * emptyArray.length);
+    password += emptyArray[randomIndex];
+  }
   return password
 }
 
