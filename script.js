@@ -8,10 +8,12 @@ function generatePassword() {
   // adding numbers to an array;
   let numA = charactersArray(10, 48);
   let password = '';
-  let characterArray = lowC.concat(upC,symA, numA);
-  console.log(characterArray)
-password += 
-  return characterArray;
+  let characterArray = lowC.concat(upC, symA, numA);
+  // console.log(characterArray)
+  const randomIndex = Math.floor(Math.random() * characterArray.length);
+
+  password = characterArray[randomIndex];
+  return password
 }
 
 function charactersArray(alphabetLength, ASCIIcodeOffset) {
