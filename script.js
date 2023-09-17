@@ -13,7 +13,7 @@ function generatePassword() {
   const lowerCharPrompt = window.confirm("Would you like your password to contain lowercase characters?")
     ? emptyArray = emptyArray.concat(lowerCaseArr)
     : emptyArray;
-    
+
   const upperCharPrompt = window.confirm("Would you like your password to contain uppercase characters?")
     ? emptyArray = emptyArray.concat(upperCaseArr)
     : emptyArray;
@@ -32,7 +32,6 @@ function generatePassword() {
   }
   return password
 }
-
 function charactersArray(alphabetLength, ASCIIcodeOffset) {
   let arr = [];
   for (let i = 0; i < alphabetLength; i++) {
@@ -40,20 +39,14 @@ function charactersArray(alphabetLength, ASCIIcodeOffset) {
   }
   return arr;
 }
-
-
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
-
 }
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
